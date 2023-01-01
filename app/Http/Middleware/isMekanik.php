@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+
+class isMekanik
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next)
+    {
+        if(!session()->isStarted()) session()->start();
+        if(!session()->has("logged", "idRoleAdmin") &&
+           !session()->has("logged", "idRoleMekanik")){
+            return redirect()->back()->withErrors([
+                "msg" => "Izin Admin Diperlukan, Atau Silahkan Daftar Menjadi Mekanik"
+            ]);
+        }
+        return $next($request);
+    }
+}
