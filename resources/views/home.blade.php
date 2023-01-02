@@ -64,9 +64,6 @@
             </div>
         </div>
       </nav>
-      {{-- @livewire('dasbord')
-      @livewire('admin.dasboard')
-      @livewire('pendaftaran.list-pendaftaran') --}}
       @yield('content')
    </div>
    @livewireScripts

@@ -57,6 +57,9 @@
                                 <div class="bg-red-600 p-2 rounded-lg text-white w-full text-center">
                                     <a href="{{ route('deletePendaftaran', ["id" =>$pendaftarans->id]) }}"><button>Delete</button></a>
                                 </div>
+                                <div class="bg-cyan-800 p-2 rounded-lg text-white w-full text-center">
+                                    <a href="{{ route('detailPendaftaran', ["id" =>$pendaftarans->id]) }}"><button>Detail</button></a>
+                                </div>
                                 @if( $pendaftarans['status'] = 'Menunggu Konfirmasi')
                                     <form method="post" action="{{ route('konfirmasiPendaftaran', $pendaftarans->id) }}">
                                         @csrf
