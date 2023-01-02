@@ -28,7 +28,6 @@
                             <th class="border p-2 text-white w-[300px]">Merek Kendaraan</th>
                             <th class="border p-2 text-white w-[300px]">Keluhan</th>
                             <th class="border p-2 text-white w-[300px]">Kerusakan</th>
-                            <th class="border p-2 text-white w-[300px]">Diperbaiki Oleh</th>
                             <th class="border p-2 text-white w-[300px]">Action</th>
                         </tr>
                     </thead>
@@ -43,13 +42,6 @@
                                         @foreach ($data_service as $data)
                                             @if ($data->id_pendaftaran == $pendaftarans->id)
                                                 {{ $data->kerusakan }}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td class="border p-2 w-[300px]">
-                                        @foreach ($data_service as $data)
-                                            @if ($data->id_pendaftaran == $pendaftarans->id)
-                                                {{ $data->nama_mekanik }}
                                             @endif
                                         @endforeach
                                     </td>

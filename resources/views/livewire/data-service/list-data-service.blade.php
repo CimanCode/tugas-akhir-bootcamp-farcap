@@ -88,17 +88,23 @@
                                         </div>
                                         @endif
                                         @if(session()->has('logged', 'idRoleAdmin'))
-                                            @if($pendaftarans['status'] = 'Telah Dikonfirmasi')
-                                            <form method="post" action="{{ route('selesai', $pendaftaran->id) }}">
-                                                @csrf
-                                                <div class="bg-cyan-600 p-2 rounded-lg text-white w-full text-center">
-                                                    <button type="submit" class="w-[80px]">Selesai</button></a>
-                                                </div>
-                                            </form>
-                                            @endif
-                                        <div class="bg-red-800 p-2 rounded-lg text-white w-full text-center">
-                                            <a href="{{ route('deleteDataService', $pendaftaran->id) }}"><button>Delete</button></a>
-                                        </div>
+                                            @foreach ($data_service as $data)
+                                                @if ($data->id_pendaftaran == $pendaftaran->id)
+                                                    @if($data->nama_mekanik != null)
+                                                        @if($pendaftarans['status'] = 'Telah Dikonfirmasi')
+                                                        <form method="post" action="{{ route('selesai', $pendaftaran->id) }}">
+                                                            @csrf
+                                                            <div class="bg-cyan-600 p-2 rounded-lg text-white w-full text-center">
+                                                                <button type="submit" class="w-[80px]">Selesai</button></a>
+                                                            </div>
+                                                        </form>
+                                                        @endif
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            <div class="bg-red-800 p-2 rounded-lg text-white w-full text-center">
+                                                <a href="{{ route('deleteDataService', $pendaftaran->id) }}"><button>Delete</button></a>
+                                            </div>
                                         @endif
                                     </td>
                                 </tr>

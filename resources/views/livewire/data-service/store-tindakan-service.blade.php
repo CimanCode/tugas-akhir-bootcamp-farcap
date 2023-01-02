@@ -41,13 +41,6 @@
                     </div>
                     <div class="flex-col">
                         <div class="mb-2 mt-2">
-                            <label class="text-slate-900 font-bold text-[17px]" for="nama_mekanik">Diperbaiki Oleh</label>
-                        </div>
-                        <input type="text" name="nama_mekanik"
-                        class="border-2 w-[500px] rounded-md p-2 focus:outline-cyan-600">
-                    </div>
-                    <div class="flex-col">
-                        <div class="mb-2 mt-2">
                             <label class="text-slate-900 font-bold text-[17px]" for="kerusakan">Kerusakan</label>
                         </div>
                         <textarea type="text" name="kerusakan"

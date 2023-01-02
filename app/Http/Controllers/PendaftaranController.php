@@ -59,6 +59,7 @@ class PendaftaranController extends Controller
             'alamat.required' => 'Alamat Harus Di Isi',
             'alamat.min' => 'Masukan Alamat Lengkap',
             'no_handphone.required' => 'No Handphone Harus Di Isi',
+            'no_handphone.numeric' => 'No Handphone Harus Berupa Number',
             'no_handphone.min' => 'No Handphone Harus 12 Karakter',
             'gender.required' => 'Gender Harus Di Isi',
             'no_kendaraan.required' => 'No Kendaraan Harus Di Isi',
@@ -128,7 +129,7 @@ class PendaftaranController extends Controller
     }
 
     public function delete($id){
-        $pendaftaran = pendaftaran::query()->where('user_id', $id)->first();
+        $pendaftaran = pendaftaran::query()->where('id', $id)->first();
         $pendaftaran->delete();
         Storage::disk('public')->delete($pendaftaran->photo_kendaraan);
         return redirect()->back();
