@@ -83,7 +83,8 @@
                         <label class="text-slate-900 font-bold text-[17px]" for="photo_kendaraan">Photo Kendaraan</label>
                     </div>
                     <input type="file" name="photo_kendaraan" id="photo_kendaraan"
-                    class="border-2 w-[500px] p-2 focus:outline-cyan-600 rounded-md">
+                    class="border-2 w-[500px] p-2 focus:outline-cyan-600 rounded-md"
+                    {{ $pendaftaran->photo_kendaraan }}>
                 </div>
                 <div class="bg-cyan-600 p-2 text-center mt-4 text-white rounded-md mx-auto">
                     <button type="submit">Save</button>

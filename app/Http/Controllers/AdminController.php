@@ -94,9 +94,6 @@ class AdminController extends Controller
             'jumlah' => $rq->input('jumlah'),
             'harga_sperpat' => $rq->input('harga_sperpat')
         ];
-
-        dd($payload);
-
         data_sperpat::query()->where('id', $id)->update($payload);
         return redirect(route('listDataSperpat'))->with('success', 'Data Sperpat Success Di Update');
     }

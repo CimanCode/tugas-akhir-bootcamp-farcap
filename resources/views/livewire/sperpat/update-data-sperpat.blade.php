@@ -23,6 +23,14 @@
                 </div>
                 <div class="flex-col">
                     <div class="mt-2 mb-2">
+                        <label class="text-slate-900 font-bold text-[17px]" for="jumlah">Jumlah</label>
+                    </div>
+                    <input type="number" name="jumlah"
+                    class="border-2 w-[500px] rounded-md p-2 focus:outline-cyan-600"
+                    value="{{ $dataSperpat->jumlah }}">
+                </div>
+                <div class="flex-col">
+                    <div class="mt-2 mb-2">
                         <label class="text-slate-900 font-bold text-[17px]" for="harga_sperpat">Harga</label>
                     </div>
                     <input type="number" name="harga_sperpat"

@@ -95,7 +95,7 @@ class dataServiceController extends Controller
 
         data_service::where('id_pendaftaran', $id)->update($payload);
         pendaftaran::where('id', $id)->update($harga_total);
-        return redirect(route('listDataService'));
+        return redirect(route('listDataService'))->with('success', "Data Service Berhasil Ditambahkan");
     }
 
     public function delete($id){

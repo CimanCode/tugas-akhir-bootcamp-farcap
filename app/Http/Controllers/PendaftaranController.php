@@ -98,11 +98,34 @@ class PendaftaranController extends Controller
     }
 
     public function detail($id){
-        $pendaftaran = pendaftaran::query()->where('id', $id)->first();
+        $pendaftaran = pendaftaran::join('user', 'pendaftaran.user_id', '=', 'user.id')->where('pendaftaran.id', $id)->first();
         $dataService = data_service::query()->where('id_pendaftaran', $pendaftaran->id)->first();
+
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $pendaftaran->total_harga,
+            ),
+            'customer_details' => array(
+                'name' => $pendaftaran->nama,
+                'email' => $pendaftaran->email,
+                'phone' => $pendaftaran->no_handphone,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
         return view('livewire.pendaftaran.detail-hasil-service',[
             'pendaftaran' => $pendaftaran,
-            'dataService' => $dataService
+            'dataService' => $dataService,
+            'snapToken' => $snapToken,
         ]);
     }
 
@@ -119,19 +142,18 @@ class PendaftaranController extends Controller
         ];
 
         if($rq->hasFile('photo_kendaraan')){
-            Storage::disk('public')->delete(pendaftaran::find($id)->first()->photo_kendaraan);
+            Storage::disk('public')->delete(pendaftaran::where('user_id', $id)->first()->photo_kendaraan);
             $pendaftaran ['photo_kendaraan'] = $rq->photo_kendaraan->store('image', 'public');
         }
-
         pendaftaran::query()->where('user_id', $id)->update($pendaftaran);
-        return redirect(route('listPendaftaran'));
-
+        return redirect(route('listPendaftaran'))->with('success', 'Update Data Berhasil');
     }
 
     public function delete($id){
-        $pendaftaran = pendaftaran::query()->where('id', $id)->first();
+        $pendaftaran = pendaftaran::query()->where('user_id', $id)->first();
         $pendaftaran->delete();
         Storage::disk('public')->delete($pendaftaran->photo_kendaraan);
         return redirect()->back();
     }
+
 }

@@ -19,5 +19,10 @@
             </div>
         </div>
     </div>
+    <div class="w-[1200px] mx-auto">
+        <div class="p-4 shadow-xl rounded-md text-center mt-4 items-center">
+            <h1 class="text-cyan-900 font-bold text-[20px]">Alamat : Jl.Raya Taraju, No.16, Kec.Taraju, Kab.Tasikmalaya</h1>
+        </div>
+    </div>
 </div>
 @endsection

@@ -55,6 +55,7 @@ Route::any('/detailPendaftaran/{id}', [PendaftaranController::class, 'detail'])-
 Route::post('/createPendaftaran', [PendaftaranController::class, 'create'])->name('createPendaftaran')->middleware('isUser');
 Route::post('/konfirmasi/{id}', [PendaftaranController::class, 'konfirmasi'])->name('konfirmasiPendaftaran')->middleware('isUser');
 Route::post('/selesai/{id}', [PendaftaranController::class, 'selesai'])->name('selesai')->middleware('isUser');
+Route::get('/checkout', [PendaftaranController::class, 'checkout'])->name('checkout')->middleware('isUser');
 
 
 

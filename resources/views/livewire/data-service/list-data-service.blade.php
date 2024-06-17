@@ -69,7 +69,7 @@
                                     <td class="border p-2 w-[300px]">
                                         @foreach ($data_service as $data)
                                             @if($data->id_pendaftaran == $pendaftaran->id)
-                                                Rp.{{ $data->listSperpat }}
+                                                {{ $data->listSperpat }}
                                             @endif
                                         @endforeach
                                     </td>
