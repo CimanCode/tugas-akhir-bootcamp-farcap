@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script type="text/javascript"
-		src="https://app.stg.midtrans.com/snap/snap.js"
+	src="https://app.stg.midtrans.com/snap/snap.js"
     data-client-key="{{config('midtrans.client_key')}}"></script>
-    @vite('resources/css/app.css')
+    {{-- @vite('resources/css/app.css') --}}
+    <link rel="stylesheet" href="{{asset('build/assets/app-7ebb306f.css')}}">
+    <link rel="stylesheet" href="{{asset('build/assets/app-b0a4c440.js')}}">
     @livewireStyles
     <title>PERSONAL MOTOR</title>
 </head>
@@ -70,6 +72,6 @@
       @yield('content')
    </div>
    @livewireScripts
-   @vite('resources/js/app.js')
+   {{-- @vite('resources/js/app.js') --}}
 </body>
 </html>
