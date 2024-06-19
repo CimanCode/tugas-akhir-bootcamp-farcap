@@ -52,7 +52,7 @@ services:
         image: mysql:5.7
         container_name: mysql_slave1
         environment:
-        MYSQL_ROOT_PASSWORD: scret
+            MYSQL_ROOT_PASSWORD: scret
         depends_on:
             - db
         ports:
